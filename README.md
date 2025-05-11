@@ -1,4 +1,4 @@
-# Welcom
+# Welcome
 You Fish NZ Homepage
 
 ## On sale
