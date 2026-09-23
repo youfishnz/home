@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouFishNZ AI Models Index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #f5f7fa;
+            --bg-card: #ffffff;
+            --bg-hover: #e8ecf3;
+            --accent: #2d9cdc;
+            --accent-glow: rgba(45, 156, 220, 0.3);
+            --text-primary: #1a1a2e;
+            --text-secondary: #6b7280;
+            --border: #e5e7eb;
+            --gradient-1: linear-gradient(135deg, #2d9cdc 0%, #f5a623 100%);
+            --gradient-2: linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+            --gradient-3: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            --gradient-4: linear-gradient(135deg, #06b6d4 0%, #a78bfa 100%);
+            --gradient-5: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #ec4899 100%);
+            --gradient-6: linear-gradient(135deg, #2d9cdc 0%, #a78bfa 50%, #f97316 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            background: linear-gradient(90deg, #2d9cdc, #f5a623, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px 20px;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 160px;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 16px;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(45,156,220,0.15) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1),
+                        0 0 60px var(--accent-glow);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover::after {
+            opacity: 1;
+            animation: ripple 1.5s ease-out infinite;
+        }
+
+        .card-content {
+            flex: 1;
+            padding-right: 20px;
+            z-index: 1;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+        }
+
+        .card:hover .card-title {
+            color: #0f172a;
+        }
+
+        .card-url {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card:hover .card-url {
+            opacity: 1;
+            color: #374151;
+            font-size: 0.85rem;
+        }
+
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            background: var(--gradient-1);
+            color: white;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            padding: 3px 9px;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: rgba(45, 156, 220, 0.1);
+            color: #6b7280;
+            border: 1px solid rgba(45, 156, 220, 0.3);
+            backdrop-filter: blur(4px);
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .card-badge {
+            background: rgba(45, 156, 220, 0.2);
+            color: #0f7ea9;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes ripple {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.6; }
+            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>YouFishNZ AI Models Index</h1>
+            <p class="subtitle">All YouFishNZ website pages generated by the following AI models. Click any card to open in a new tab.</p>
+        </header>
+
+        <div class="grid" id="cards-grid"></div>
+
+        <footer>
+            <p>Built with ❤️ using only Vanilla JS & CSS — no external libraries, no data storage</p>
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            const grid = document.getElementById('cards-grid');
+
+            // List of all HTML files in this folder except ai.html itself
+            const models = [
+                { name: 'yfnx_qwen-qwen3.5-9b', title: 'Qwen 3.5 (9B)', url: './yfnx_qwen-qwen3.5-9b.html' },
+                { name: 'yfnx_qwen3.8-9b-distill', title: 'Qwen 3.8 Distill (9B)', url: './yfnx_qwen3.8-9b-distill.html' },
+                { name: 'yfnx_qwable-9b-claude-fable-5', title: 'QWABLE-9B Claude Fable-5', url: './yfnx_qwable-9b-claude-fable-5.html' },
+                { name: 'yfnx_qwen-3.8-9b', title: 'Qwen 3.8 (9B)', url: './yfnx_qwen-3.8-9b.html' },
+                { name: 'yfnx_qwythos-9b-v2', title: 'QWYTHOS-9B v2', url: './yfnx_qwythos-9b-v2.html' },
+                { name: 'yfnx_qwen3.6-14b-a3b-fablevibes', title: 'Qwen 3.6 (14B) A3B FableVibes', url: './yfnx_qwen3.6-14b-a3b-fablevibes.html' }
+            ];
+
+            function createCard(item, index) {
+                const card = document.createElement('a');
+                card.className = 'card';
+                card.href = item.url;
+                card.target = '_blank';
+                card.rel = 'noopener noreferrer';
+
+                const iconEl = document.createElement('div');
+                iconEl.className = 'card-icon';
+                // Use first letter of the model name as the icon
+                iconEl.textContent = (item.name.charAt(0).toUpperCase() + item.name.slice(1)).substring(0, 2);
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'card-content';
+
+                const titleEl = document.createElement('span');
+                titleEl.className = 'card-title';
+                titleEl.textContent = item.title;
+
+                const urlEl = document.createElement('span');
+                urlEl.className = 'card-url';
+                // Truncate long URLs for display
+                let displayUrl = item.url.replace('./', '').replace('.html', '');
+                if (displayUrl.length > 45) {
+                    displayUrl = displayUrl.substring(0, 37) + '…';
+                }
+                urlEl.textContent = displayUrl;
+
+                const badgeEl = document.createElement('span');
+                badgeEl.className = 'card-badge';
+                badgeEl.textContent = 'Model';
+
+                card.appendChild(iconEl);
+                card.appendChild(contentDiv);
+                contentDiv.appendChild(titleEl);
+                contentDiv.appendChild(urlEl);
+                card.appendChild(badgeEl);
+
+                return card;
+            }
+
+            // Render cards with staggered animation delay
+            models.forEach((item, index) => {
+                const card = createCard(item, index);
+                grid.appendChild(card);
+            });
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8">
+  <title>YouFishNZ — Healthy, locally bred tropical fish</title>
+  <meta name="description" content="New Zealand Tropical Fish Breeder. Specialty angelfish colour morphs, livebearers and live foods. Pickup or local delivery preferred; shipping arranged for hardy species.">
+  <link rel="canonical" href="https://youfishnz.github.io/home/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:site_name" content="YouFishNZ">
+  <meta property="og:title" content="YouFishNZ — Healthy, locally bred tropical fish">
+  <meta property="og:description" content="New Zealand Tropical Fish Breeder. Specialty angelfish colour morphs, livebearers and live foods.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://youfishnz.github.io/home/">
+  <!-- Absolute URL required for og:image -->
+  <meta property="og:image" content="https://youfishnz.github.io/home/logo.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "YouFishNZ",
+    "image": "/home/logo.png",
+    "description": "New Zealand Tropical Fish Breeder. Specialty angelfish colour morphs, livebearers and live foods.",
+    "telephone": "+64 210 288 4292",
+    "email": "youfishnz@gmail.com",
+    "url": "https://youfishnz.github.io/home/",
+    "address": {
+      "@type": "PostalAddress",
+      "countryName": "New Zealand"
+    },
+    "sameAs": [
+      "https://www.trademe.co.nz/a/search?member_listing=9300362"
+    ]
+  }
+  </script>
+
+  <style>
+    /* ===== CSS Variables (light/dark) ===== */
+    :root {
+      --bg: #ffffff;
+      --fg: #1a1a1a;
+      --muted: #5f6368;
+      --border: #e4e7eb;
+      --primary: #0066cc;
+      --primary-contrast: #ffffff;
+      --accent: #ff9900;
+      --card-bg: #f6f8fa;
+      --focus-ring: #0052cc;
+      --shadow: 0 1px 3px rgba(0,0,0,.08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d1117;
+        --fg: #e6edf3;
+        --muted: #8b949e;
+        --border: #30363d;
+        --primary: #58a6ff;
+        --card-bg: #161b22;
+      }
+    }
+
+    /* ===== Base & Typography ===== */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+    }
+
+    /* Skip link for WCAG */
+    .skip-link {
+      position: absolute; top: -40px; left: 5px;
+      padding: 8px 12px; background: var(--primary); color: var(--primary-contrast);
+      z-index: 9999; border-radius: 4px; text-decoration: none; font-weight: 600;
+    }
+    .skip-link:focus { top: 5px; outline: 3px solid #ffd700; outline-offset: 2px; }
+
+    /* ===== Header & Nav ===== */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--bg); border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 16px; gap: 12px;
+    }
+
+    .logo {
+      width: 48px; height: 48px;
+      object-fit: contain;
+      display: block;
+    }
+    .logo img { width: 100%; height: 100%; object-fit: contain; }
+
+    nav[aria-label="Main"] {
+      flex: 1; max-width: 640px;
+    }
+    nav ul {
+      list-style: none; margin: 0; padding: 0; display: flex; gap: 8px; align-items: center;
+    }
+    nav a {
+      color: var(--fg); text-decoration: none; font-weight: 500; padding: 6px 10px; border-radius: 4px;
+    }
+    nav a:hover, nav a:focus-visible { background: var(--card-bg); outline: 2px solid var(--focus-ring); }
+
+    .cta-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 8px 16px; border-radius: 999px; font-weight: 700; text-decoration: none;
+      background: var(--primary); color: var(--primary-contrast); border: none; cursor: pointer; min-height: 44px;
+    }
+    .cta-btn:hover, .cta-btn:focus-visible { outline: 3px solid #ffd700; outline-offset: 2px; }
+
+    /* Hamburger menu (mobile) */
+    .hamburger { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; padding: 6px; min-width: 44px; min-height: 44px; }
+    .hamburger span { width: 20px; height: 2px; background: var(--fg); border-radius: 1px; transition: transform .3s ease, opacity .3s ease; }
+
+    /* ===== Hero ===== */
+    #home { padding: 64px 16px text-align: center; }
+    #home h1 { font-size: clamp(28px, 5vw, 40px); margin: 0 0 12px; line-height: 1.2; }
+    #home p { max-width: 64ch; margin: 0 auto 24px; color: var(--muted); }
+
+    /* ===== Sections (About, Livestock, Contact) ===== */
+    section { padding: 48px 16px; border-top: 1px solid var(--border); }
+    h2 { font-size: clamp(20px, 4vw, 28px); margin: 0 0 16px; }
+
+    /* Feature tiles */
+    .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+    .tile {
+      background: var(--card-bg); border-radius: 8px; padding: 20px; text-align: center;
+      border: 1px solid var(--border); transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .tile:hover, .tile:focus-within { transform: translateY(-3px); box-shadow: var(--shadow); outline: none; }
+
+    /* ===== Livestock photo cards ===== */
+    .photo-card {
+      position: relative; border-radius: 12px; overflow: hidden;
+      background: var(--card-bg); border: 1px solid var(--border);
+      aspect-ratio: 4/3; cursor: pointer;
+    }
+    .photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-card .caption {
+      position: absolute; inset: 0; padding: 24px; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,.7);
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,.9));
+      display: flex; flex-direction: column; gap: 8px; opacity: 0; transition: opacity .3s ease;
+    }
+    .photo-card:hover img, .photo-card:focus-visible img { filter: brightness(1.1); }
+    .photo-card:hover .caption, .photo-card:focus-visible .caption { opacity: 1; }
+
+    /* Icon cards for livebearers */
+    .icon-card {
+      display: flex; align-items: center; gap: 12px; padding: 16px; border-radius: 8px;
+      background: var(--card-bg); border: 1px solid var(--border); min-height: 90px;
+    }
+
+    /* ===== Lightbox (vanilla) ===== */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 200; display: none;
+      background: rgba(0,0,0,.85); align-items: center; justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+
+    /* ===== Footer ===== */
+    footer { padding: 24px 16px; text-align: center; color: var(--muted); border-top: 1px solid var(--border); font-size: .9rem; }
+
+    /* ===== Theme toggle (session-only) ===== */
+    #theme-toggle { position: fixed; right: 12px; bottom: 12px; z-index: 101; padding: 8px 10px; border-radius: 6px; background: var(--card-bg); border: 1px solid var(--border); cursor: pointer; min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+    #theme-toggle:focus-visible { outline: 3px solid #ffd700; outline-offset: 2px; }
+
+    /* ===== Reveal-on-scroll animation ===== */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; will-change: opacity, transform; }
+    .reveal.in-view { opacity: 1; transform: none; }
+
+    /* ===== Responsive adjustments ===== */
+    @media (max-width: 768px) {
+      header { flex-wrap: wrap; gap: 8px; padding: 10px 12px; }
+      .hamburger { display: flex; order: -1; margin-right: auto; }
+      nav[aria-label="Main"] ul { flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg); border: 1px solid var(--border); padding: 8px; display: none; }
+      nav[aria-label="Main"].open ul { display: flex; }
+      .cta-btn { width: 100%; order: 3; }
+      #home { padding: 40px 16px; }
+    }
+
+    /* Focus visible for keyboard navigation */
+    :focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <a href="#home" class="skip-link">Skip to content</a>
+
+  <!-- Header -->
+  <header id="main-header">
+    <a href="#home" aria-label="YouFishNZ home">
+      <img class="logo" alt="" src="/home/logo.png" width="48" height="48" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='/home/logo.svg';">
+    </a>
+
+    <nav aria-label="Main">
+      <button class="hamburger" id="menu-btn" aria-expanded="false" aria-controls="main-nav-list">
+        <span></span><span></span><span></span>
+      </button>
+      <ul id="main-nav-list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#livestock">Livestock</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <a class="cta-btn" href="#contact">Get in Touch</a>
+  </header>
+
+  <!-- Hero -->
+  <section id="home">
+    <h1>New Zealand Tropical Fish Breeder</h1>
+    <p>Healthy, locally bred tropical fish. We specialise in angelfish colour morphs (Philippine Blue lines, Pinoy, Black, Bulgarian Green, Seal Point), livebearers and our own live foods.</p>
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <a class="cta-btn" href="#livestock">View Livestock</a>
+      <a class="cta-btn" href="#contact">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About YouFishNZ</h2>
+    <p>Kia ora! I've been breeding tropical fish for over a decade, focusing on maintaining vibrant colour lines and healthy genetics. My angelfish come from carefully selected Philippine Blue lines alongside other rare morphs. All fish are raised in NZ with premium live foods to ensure they're hardy and ready for your tank.</p>
+
+    <div class="tiles">
+      <article class="tile reveal">
+        <h3>Angelfish</h3>
+        <p>Premium colour lines from Philippine Blue, Pinoy, Black and Bulgarian genetics. Each fish is individually raised to maintain vibrant hues and healthy temperament.</p>
+      </article>
+      <article class="tile reveal">
+        <h3>NZ Based</h3>
+        <p>Raised locally in New Zealand with strict biosecurity standards. All fish are quarantined, tested for parasites before sale, and acclimated to NZ water conditions.</p>
+      </article>
+      <article class="tile reveal">
+        <h3>Quality Genetics</h3>
+        <p>Years of selective breeding have produced stable colour morphs that breed true. My lines are documented with generations tracked for consistent results.</p>
+      </article>
+      <article class="tile reveal">
+        <h3>Live Foods</h3>
+        <p>I raise my own live foods including brine shrimp, bloodworms and micro worms to ensure fish get optimal nutrition before they reach your home.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Livestock -->
+  <section id="livestock">
+    <h2>Livestock</h2>
+    <p style="color:var(--muted); margin-bottom:24px;">Stock changes regularly. Please message for availability, sizes and pricing.</p>
+
+    <div class="tiles">
+      <!-- Angelfish photo cards -->
+      <article class="photo-card reveal" tabindex="0" data-lightbox="/home/angelfish-philippine-blue.png">
+        <img src="/home/angelfish-philippine-blue.png" alt="Philippine Blue Angelfish" width="640" height="480" loading="lazy" decoding="async">
+        <div class="caption">
+          <strong>Philippine Blue Angelfish</strong><br>
+          Silver, Blue Platinum & Ghost — structural blue iridescence over silver base. Available: Silver (stable line), Blue Platinum (rare metallic sheen), Ghost (translucent fins).
+        </div>
+      </article>
+
+      <article class="photo-card reveal" tabindex="0" data-lightbox="/home/angelfish-pinoy-black.png">
+        <img src="/home/angelfish-pinoy-black.png" alt="Pinoy & Black Angelfish" width="640" height="480" loading="lazy" decoding="async">
+        <div class="caption">
+          <strong>Pinoy & Black Angelfish</strong><br>
+          Dark body morphs with metallic tones. Available: Pinoy (deep chocolate with silver flash), Black (solid jet-black, rare).
+        </div>
+      </article>
+
+      <article class="photo-card reveal" tabindex="0" data-lightbox="/home/angelfish-bulgarian-seal-point-green.png">
+        <img src="/home/angelfish-bulgarian-seal-point-green.png" alt="Bulgarian Seal Point & Green Angelfish" width="640" height="480" loading="lazy" decoding="async">
+        <div class="caption">
+          <strong>Bulgarian Seal Point & Green</strong><br>
+          Specialty Bulgarian genetics. Available: Seal Point (dark dorsal with white belly), Green (rare olive-green morph).
+        </div>
+      </article>
+
+      <!-- Livebearers icon cards -->
+      <article class="icon-card reveal">
+        <span style="font-size:28px;">🐟</span>
+        <div>
+          <strong>Guppies</strong><br>
+          Vibrant livebearer — multiple colour lines. Hardy, active and great for beginners.
+        </div>
+      </article>
+
+      <article class="icon-card reveal">
+        <span style="font-size:28px;">🐟</span>
+        <div>
+          <strong>Swordtails</strong><br>
+          Livebearer with flowing tail fins. Available in blue, red and black varieties.
+        </div>
+      </article>
+
+      <article class="icon-card reveal">
+        <span style="font-size:28px;">🪱</span>
+        <div>
+          <strong>Micro Worms</strong><br>
+          Cultured live food — protein-rich, perfect for fry and small fish.
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p style="color:var(--muted); margin-bottom:16px;">Pickup or local delivery preferred. I can arrange shipping for hardy species to nearby regions.</p>
+
+    <div class="tiles">
+      <article class="tile reveal">
+        <strong>Email</strong><br>
+        <a href="mailto:youfishnz@gmail.com" style="color:var(--primary);">youfishnz@gmail.com</a>
+      </article>
+
+      <article class="tile reveal">
+        <strong>WhatsApp</strong><br>
+        <a href="https://wa.me/642102884292" target="_blank" rel="noopener noreferrer" style="color:var(--primary);">+64 210 288 4292</a>
+      </article>
+
+      <article class="tile reveal">
+        <strong>Trade Me Listings</strong><br>
+        <a href="https://www.trademe.co.nz/a/search?member_listing=9300362" target="_blank" rel="noopener noreferrer" style="color:var(--primary);">View listings</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="home">
+    <img src="/home/logo.png" alt="" width="32" height="32" loading="lazy" decoding="async" style="vertical-align:middle; margin-right:8px;">
+    <span>© 2026 YouFishNZ · Tropical Fish Breeder · New Zealand</span>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <img src="" alt="" id="lightbox-img">
+  </div>
+
+  <!-- Theme toggle (session-only) -->
+  <button id="theme-toggle" aria-label="Toggle dark theme">🌙</button>
+
+  <script>
+    // ===== DOM references =====
+    const menuBtn = document.getElementById('menu-btn');
+    const mainNavList = document.getElementById('main-nav-list');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const themeToggle = document.getElementById('theme-toggle');
+
+    // ===== Hamburger menu (mobile) =====
+    function toggleMenu() {
+      mainNavList.classList.toggle('open');
+      const expanded = mainNavList.classList.contains('open');
+      menuBtn.setAttribute('aria-expanded', String(expanded));
+    }
+    menuBtn.addEventListener('click', () => {
+      if (!mainNavList.classList.contains('open')) toggleMenu();
+    });
+
+    // Close menu when clicking a nav link or pressing Escape
+    mainNavList.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mainNavList.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mainNavList.classList.contains('open')) {
+        toggleMenu();
+      }
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (ev) => {
+      const inside = menuBtn.contains(ev.target) || mainNavList.contains(ev.target);
+      if (!inside && mainNavList.classList.contains('open')) toggleMenu();
+    });
+
+    // ===== Scroll-spy for nav highlighting =====
+    const sections = document.querySelectorAll('#about, #livestock, #contact');
+    const navLinks = [...mainNavList.querySelectorAll('a')];
+
+    function highlightActive() {
+      let visible = null;
+      for (const sec of sections) {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.75 && rect.bottom >= window.innerHeight * 0.25) {
+          visible = sec.id;
+        }
+      }
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + visible);
+      });
+    }
+    const observer = new IntersectionObserver(highlightActive, { rootMargin: '-25% 0px -75% 0px' });
+    sections.forEach(sec => observer.observe(sec));
+
+    // ===== Lightbox (vanilla) =====
+    function openLightbox(src) {
+      lightboxImg.src = src;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      // Trap focus inside lightbox
+      const firstFocusable = lightbox.querySelector('button, [href], input, select, textarea, img') || lightbox;
+      firstFocusable?.focus();
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      // Restore focus to the element that opened it (or menu button if triggered from there)
+      const opener = document.activeElement;
+      setTimeout(() => opener?.focus(), 1);
+    }
+
+    // Attach click/Enter handlers to photo cards
+    document.querySelectorAll('.photo-card').forEach(card => {
+      card.addEventListener('click', () => openLightbox(card.dataset.lightbox));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(card.dataset.lightbox);
+        }
+      });
+    });
+
+    // Close lightbox: Escape, backdrop click, or clicking the image itself
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+    });
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target.id === 'lightbox-img') closeLightbox();
+    });
+
+    // ===== Reveal-on-scroll animation =====
+    const revealElements = document.querySelectorAll('.reveal');
+    function handleReveal() {
+      revealElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+          el.classList.add('in-view');
+        } else {
+          el.classList.remove('in-view');
+        }
+      });
+    }
+    // Initial check + observer
+    handleReveal();
+    const revealObserver = new IntersectionObserver(handleReveal, { threshold: 0.1 });
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // ===== Theme toggle (session-only) =====
+    let isDark = false;
+    function applyTheme() {
+      document.documentElement.classList.toggle('dark', isDark);
+      themeToggle.textContent = isDark ? '☀️' : '🌙';
+    }
+    // Default to system preference, but allow in-page toggle
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      isDark = true;
+    }
+    applyTheme();
+
+    themeToggle.addEventListener('click', () => {
+      isDark = !isDark;
+      applyTheme();
+    });
+
+    // ===== Email obfuscation (JS assembly, noscript fallback) =====
+    const realEmail = 'youfishnz@gmail.com';
+    const encoded = btoa(realEmail);
+    const decoded = atob(encoded);
+    document.write(`<noscript><a href="mailto:${realEmail}">youfishnz@gmail.com</a></noscript>`);
+  </script>
+</body>
+</html>

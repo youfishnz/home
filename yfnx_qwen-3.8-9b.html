@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>New Zealand Tropical Fish Breeder — YouFishNZ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Healthy, locally bred tropical fish from New Zealand. Specialising in angelfish colour morphs, livebearers and premium live foods. Pickup or local delivery available.">
+<link rel="canonical" href="https://youfishnz.github.io/home/">
+<!-- Open Graph -->
+<meta property="og:title" content="New Zealand Tropical Fish Breeder — YouFishNZ">
+<meta property="og:description" content="Healthy, locally bred tropical fish from New Zealand. Specialising in angelfish colour morphs, livebearers and premium live foods.">
+<meta property="og:url" content="https://youfishnz.github.io/home/">
+<meta property="og:type" content="website">
+<!-- REQUIRED absolute URL for og:image — the only absolute resource on this page -->
+<meta property="og:image" content="https://youfishnz.github.io/home/logo.png">
+<meta property="og:site_name" content="YouFishNZ">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://youfishnz.github.io/home/">
+<meta name="twitter:title" content="New Zealand Tropical Fish Breeder — YouFishNZ">
+<meta name="twitter:description" content="Healthy, locally bred tropical fish from New Zealand. Specialising in angelfish colour morphs, livebearers and premium live foods.">
+<!-- Inline SVG favicon as data URI (no external file) -->
+<link rel="icon" href='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><text y=%22.9em%22 font-size=%2252%22>🐠</text></svg>'>
+<!-- JSON-LD structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["Organization", "LocalBusiness"],
+  "name": "YouFishNZ",
+  "url": "https://youfishnz.github.io/home/",
+  "logo": "logo.png",
+  "description": "New Zealand Tropical Fish Breeder — Healthy, locally bred tropical fish including angelfish colour morphs, livebearers and premium live foods.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "NZ"
+  },
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+64-210-288-4292",
+      "contactType": "customer service",
+      "email": "<obfuscated>",
+      "areaServed": ["NZ"]
+    }
+  ],
+  "sameAs": [
+    "https://www.trademe.co.nz/a/search?member_listing=9300362"
+  ]
+}
+</script>
+<style>
+/* ============================================================
+   RESET & BASE STYLES — NO EXTERNAL DEPENDENCIES
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:auto;font-size:16px;line-height:1.5}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#fafafa;color:#222;line-height:1.6;min-height:100vh}a{text-decoration:none;color:#1a73e8}a:hover,a:focus,a.active{color:#1557b0;text-decoration:underline}button,input,textarea,select{font-family:inherit;font-size:inherit}img{max-width:100%;display:block;height:auto;border-radius:4px}ul,ol{list-style:none}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.skip-link:focus{top:8px;left:8px;z-index:9999;background:#fff;color:#222;padding:12px 24px;border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,.3);outline:none}
+
+/* ============================================================
+   THEME VARIABLES — LIGHT / DARK WITH TOGGLE SUPPORTED
+   Default to system preference (light), toggle flips via class on html
+   ============================================================ */
+:root{--bg:#fafafa;--fg:#222;--muted:#555;--card-bg:#fff;border-radius:12px}
+[data-theme="dark"]{--bg:#0f1419;--fg:#e8eaed;--muted:#a0aec0;--card-bg:#161b23}
+
+/* ============================================================
+   TYPOGRAPHY & UTILITIES
+   ============================================================ */
+h1,h2,h3,h4{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.25;margin-top:1em}h1{font-size:clamp(1.8rem,4vw,2.4rem)}h2{font-size:clamp(1.3rem,2.5vw,1.7rem)}h3{font-size:clamp(1.05rem,2vw,1.25rem)}p{margin-bottom:1em}small{font-size:.85em;color:var(--muted)}
+
+/* ============================================================
+   LAYOUT — HEADER & NAVIGATION
+   ============================================================ */
+.sr-only-focusable:focus:not(:focus-visible){position:static;width:auto;height:auto;padding:0;margin:0;overflow:auto;clip:auto}
+header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid rgba(0,0,0,.1);transition:border-color .3s}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;max-width:960px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:1.2rem;color:var(--fg);text-decoration:none}.logo svg{width:32px;height:32px}nav ul{display:flex;gap:.8rem}nav li a{color:var(--fg);padding:.4rem .6rem;border-radius:6px;text-decoration:none;font-size:.95rem}nav li a:hover,nav li a:focus,nav li a.active{background:rgba(0,0,0,.05);color:#1a73e8;text-decoration:none;outline:none}.hamburger{text-align:center;margin-left:auto;padding-top:.2rem;display:none}.hamburger button{width:40px;height:36px;border:none;background:transparent;color:var(--fg);cursor:pointer;display:flex;flex-direction:column;justify-content:center;gap:5px;z-index:11}button .bar{height:2px;width:18px;background:currentColor;border-radius:99px;transition:all .3s ease}.hamburger button[aria-expanded="true"] .bar:nth-child(1){transform:rotate(-45deg);transform-origin:center;top:-7px}.hamburger button[aria-expanded="true"] .bar:nth-child(2){opacity:0}.hamburger button[aria-expanded="true"] .bar:nth-child(3){transform:rotate(45deg);transform-origin:center;bottom:-7px}.menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6;z-index:99;display:none}
+
+/* Mobile nav below 768px */
+@media (max-width:768px){.header-inner{padding:.5rem .75rem}.desktop-nav{display:none !important}.hamburger{display:flex}}
+.menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:99;display:none}
+.menu-backdrop{position:fixed;inset:0;background:#1a222e;z-index:100;opacity:0;transition:opacity .3s ease;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.menu-backdrop.open{opacity:1}.menu-backdrop a{color:#fff;font-size:1.4rem;padding:.8rem 1.2rem;margin:6px;border-radius:8px;background:#2a3547;color:#fff;text-decoration:none;transition:background .2s}
+.menu-backdrop a:hover,.menu-backdrop a:focus,a[aria-current="page"]{background:#3a4b5e;text-decoration:none}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.hero{position:relative;padding:clamp(60px,8vw,90px) 1rem 4rem;max-width:960px;margin:0 auto;background:linear-gradient(180deg,var(--bg),rgba(var(--card-bg,255),.7))}
+.hero-grid{display:grid;gap:clamp(1rem,3vw,1.5rem);grid-template-columns:auto 1fr;align-items:flex-start}.hero-eyebrow{text-transform:uppercase;font-size:.8em;letter-spacing:.06em;color:#f9a825;font-weight:700;text-align:right}
+.hero h1{margin-top:0;line-height:1.15}
+.hero p{color:var(--muted);max-width:56ch;margin-bottom:clamp(.8rem,3vw,1.2rem)}
+.hero-actions{display:flex;flex-direction:column;gap:.7rem;margin-left:-.4em;min-width:max-content}.hero-actions button,.hero-actions a{padding:.8rem 1.4rem;border-radius:6px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;transition:all .2s}
+.hero-actions .btn-primary{background:#1a73e8;color:#fff;border:2px solid #1a73e8}.hero-actions .btn-secondary{background:transparent;color:var(--fg);border:2px solid currentColor}.hero-actions button:hover,.hero-actions a:hover{transform:translateY(-2px)}.hero-actions button:focus-visible,button[aria-expanded="true"]{outline:3px solid #f9a825;outline-offset:-2px}
+.hero-actions .btn-primary:hover{background:#1764c9;border-color:#1764c9}.hero-actions .btn-secondary:hover{background:rgba(0,0,0,.05);border-color:#333}[data-theme="dark"] .hero-actions .btn-secondary:hover{background:rgba(255,255,255,.08)}
+
+/* ============================================================
+   ABOUT SECTION — Intro + Feature Tiles
+   ============================================================ */
+section{padding:clamp(60px,5vw,70px) 1rem;max-width:960px;margin:0 auto}.about-grid{display:grid;gap:clamp(1.2rem,3.5vw,2rem);margin-top:clamp(.8em,3.5vw,1.8rem)}.feature-tile{padding:.9rem;border-radius:10px;background:var(--card-bg);border:1px solid rgba(0,0,0,.06);transition:transform .3s ease,box-shadow .3s ease;cursor:pointer}.feature-tile:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.15)}.feature-tile h3{font-size:1.05rem;margin-bottom:.35rem}
+.feature-tile p{font-size:.9rem;color:var(--muted)}
+
+/* ============================================================
+   LIVESTOCK SECTION — Photo Cards + Livebearers
+   ============================================================ */
+.livestock-intro{margin-bottom:clamp(1rem,2.5vw,1.2rem);color:var(--muted)}.livestock-grid{display:grid;gap:.7rem;margin-top:clamp(.6em,2.5vw,1rem)}.photo-card{position:relative;border-radius:10px;background:var(--card-bg);border:1px solid rgba(0,0,0,.06);overflow:hidden}.photo-card h3{padding:.85rem .9rem 0;font-size:1.05rem}
+.photo-card p{padding:0 .9rem .7rem;font-size:.9rem;color:var(--muted)}.photo-card ul{margin-top:.4rem;padding:.5rem .9rem;background:#f3f6fa;border-radius:8px}.photo-card li{font-family:"SF Mono",Menlo,monospace;font-size:.82em;line-height:1.6;display:flex;align-items:center;gap:.4rem;margin-bottom:.25rem}
+.photo-card li::before{content:"•";color:#f9a825}.photo-card img{width:100%;height:auto;display:block;padding:1px 0;border:none!important}
+.livebearers-grid{display:grid;gap:.7rem;margin-top:clamp(.6em,2.5vw,1rem)}.icon-card{padding:1rem;border-radius:10px;background:var(--card-bg);border:1px solid rgba(0,0,0,.06);text-align:center}.icon-card .emoji{font-size:3rem;display:block;margin-bottom:.4rem}.icon-card h4{margin-bottom:.25rem}
+.icon-card p{font-size:.85rem;color:var(--muted)}
+
+/* ============================================================
+   CONTACT SECTION — Tiles
+   ============================================================ */
+.contact-intro{margin-bottom:.7em;color:var(--muted)}.contact-grid{display:grid;gap:.6rem;margin-top:.4em}.contact-tile{padding:.85rem;border-radius:10px;background:var(--card-bg);border:1px solid rgba(0,0,0,.06);font-size:.92rem;display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--fg)}.contact-tile svg{width:36px;height:36px;color:#f9a825}.contact-tile h4{margin-bottom:.1rem}
+.contact-tile p,.contact-tile span{font-size:.85em;color:var(--muted)}
+.footer-note{margin-top:clamp(.8em,3vw,1.2em);text-align:center;color:#7f8c9a;font-size:.88em;padding:.6rem;border-radius:10px;background:rgba(0,0,0,.03)
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{padding:clamp(40px,5vw,50px) 1rem;max-width:960px;margin:0 auto;text-align:center;color:var(--muted);font-size:.88em;border-top:1px solid rgba(0,0,0,.08)}
+
+/* ============================================================
+   LIGHTBOX — FULLSCREEN IMAGE MODAL (NO LIBRARY)
+   Accessible with Escape key and focus trap.
+   Loads the same relative image filename — no hi-res asset needed.
+   ============================================================ */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:1000;display:none;align-items:center;justify-content:center;padding:.5rem}
+.lightbox.open{display:flex}.lightbox img{max-height:85vh;width:auto;max-width:96vw;border-radius:4px;outline:3px solid #fff;box-shadow:0 0 0 2px rgba(255,255,255,.1)}
+.lightbox-close{position:absolute;top:.7rem;left:.7rem;width:48px;height:48px;border-radius:50%;background:#3a4b5e;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.6rem;line-height:1;border:none;cursor:pointer;z-index:2}
+.lightbox-close:hover,.lightbox-close:focus{background:#4b5c70}.lightbox-close::after{content:"✕"}
+.lightbox-caption{position:absolute;bottom:.8rem;left:1rem;color:#fff;font-size:.9rem;text-shadow:0 1px 3px rgba(0,0,0,.8)}
+
+/* ============================================================
+   REVEAL ON SCROLL ANIMATION (IntersectionObserver)
+   Disabled under prefers-reduced-motion
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.reveal.in-view{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ============================================================
+   ACCESSIBILITY & FOCUS UTILITIES
+   ============================================================ */
+*:focus-visible{outline:3px solid #f9a825;outline-offset:-2px}.skip-link:focus{position:absolute;top:6px;left:6rem;z-index:1000;background:#fff;color:#222;padding:10px 24px;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.3);font-weight:600}
+@media(prefers-reduced-motion:reduce){*:focus-visible{outline:none}}
+
+</style>
+</head>
+<body data-theme="light">
+<!-- Skip-to-content link for keyboard users -->
+<a href="#main" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
+
+<!-- Theme Toggle: persisted via a sessionStorage value on the html element itself (no separate cookie/localStorage) -->
+<div id="theme-toggle-btn" role="button" tabindex="0" style="position:fixed;right:.75rem;top:.6rem;width:48px;height:48px;border-radius:50%;background:#f9a825;color:#fff;border:none;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,.2);font-family:sans-serif;">🌙</div>
+
+<header role="banner">
+<div class="header-inner">
+<a href="#home" aria-label="YouFishNZ home logo"><img src="logo.png" alt="" width="32" height="32" loading="eager"></a>
+
+<!-- Desktop Navigation -->
+<nav class="desktop-nav" aria-label="Primary navigation">
+<ul role="menubar">
+<li><a href="#about" aria-current="page">About</a></li>
+<li><a href="#livestock">Livestock</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<!-- Mobile Hamburger -->
+<div class="hamburger">
+<button aria-label="Open navigation menu" id="menu-btn" aria-expanded="false" aria-controls="mobile-menu" tabindex="0">
+<span class="bar"></span><span class="bar"></span><span class="bar"></span>
+</button>
+</div>
+</div>
+
+<!-- Mobile Menu Backdrop -->
+<div id="mobile-menu-overlay" class="menu-overlay" role="dialog" aria-modal="true" aria-labelledby="mobile-heading">
+<a href="#home"><span style="font-size:1.5rem;line-height:0">🐠</span></a>
+<a href="#about">About</a>
+<a href="#livestock">Livestock</a>
+<a href="#contact">Contact</a>
+</div>
+</header>
+
+<main id="main" role="main">
+<section id="home" class="hero" aria-labelledby="hero-heading">
+<div class="hero-grid">
+<div class="hero-eyebrow">New Zealand Tropical Fish Breeder</div>
+<div>
+<h1 id="hero-heading">Healthy, locally bred tropical fish</h1>
+<p>We specialise in premium angelfish colour morphs (Philippine Blue lines, Pinoy, Black, Bulgarian Green, Bulgaria Seal Point), a curated selection of hardy livebearers, and cultured live foods to keep your tank thriving.</p>
+<div class="hero-actions">
+<a href="#livestock" class="btn-primary" aria-label="View livestock">View Livestock</a>
+<a href="#contact" class="btn-secondary" aria-label="Get in touch">Get in Touch</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="about" class="about" aria-labelledby="about-heading">
+<h2 id="about-heading">About YouFishNZ</h2>
+<div class="about-grid">
+<p>Kia ora! I'm a dedicated tropical fish breeder based in New Zealand, passionate about raising healthy, vibrant angelfish and maintaining a small but carefully selected range of livebearers. My focus is on colour morphs with strong structural blue iridescence — the Philippine Blue line (Silver, Blue Platinum & Ghost), Pinoy & Black for their deep dark tones, and Bulgarian genetics including Seal Point and Green varieties.</p>
+<p>I also offer a selection of hardy livebearer species alongside cultured micro worms to support your tank's ecosystem. My husbandry approach prioritises stable water quality, ethical breeding practices, and transparent sourcing — every fish is raised with care for its long-term health and temperament.</p>
+
+<h3 id="about-features">At a glance</h3>
+<div class="feature-tile"><h4>🐠 Angelfish</h4><p>Carefully bred colour morphs with strong genetics and consistent structure.</p></div>
+<div class="feature-tile"><h4>🇳🇿 NZ Based</h4><p>Fully local operation — pickup or local delivery available for hardy species.</p></div>
+<div class="feature-tile"><h4>🧬 Quality Genetics</h4><p>Selected breeding lines with documented colour stability and health.</p></div>
+<div class="feature-tile"><h4>🪱 Live Foods</h4><p>Cultured micro worms and other live feeds to support fry growth.</p></div>
+
+<p style="font-size:.85em;color:#7f8c9a;margin-top:1em;">Note: Stock changes regularly. Message me for current availability, sizes and pricing.</p>
+</div>
+</section>
+
+<section id="livestock" class="livestock" aria-labelledby="livestock-heading">
+<h2 id="livestock-heading">Livestock</h2>
+<p class="livestock-intro">Stock changes regularly. Message me for current availability, sizes and pricing.</p>
+
+<div class="livestock-grid">
+<article class="photo-card reveal" aria-labelledby="phil-eyebrow">
+<h3 id="phil-eyebrow"><span style="color:#f9a825">Philippine Blue Angelfish</span></h3>
+<p>Silver, Blue Platinum & Ghost — these display a striking structural blue iridescence that shifts with the angle of light. The Silver variant carries subtle grey-blue sheen across the dorsal surface; Blue Platinum shows deeper cobalt reflections on the fins and flanks; Ghost presents a lighter, almost ethereal wash of pale azure.</p>
+<ul>
+<li><span class="name">Silver</span> — soft silver base with iridescent blue highlights that shimmer when swimming. Best viewed in dim lighting or against dark backgrounds.</li>
+<li><span class="name">Blue Platinum</span> — intense cobalt reflections across the body and fins, particularly strong along the dorsal margin and anal fin edges.</li>
+<li><span class="name">Ghost</span> — pale silver-blue wash over a lighter body tone, giving an almost translucent appearance in bright light.</li>
+</ul>
+<img src="angelfish-philippine-blue.png" alt="Philippine Blue Angelfish displaying iridescent blue reflections on the dorsal fin and flank under angled lighting. The fish is shown swimming horizontally with water ripples visible in the background." width="640" height="320" loading="lazy">
+</article>
+
+<article class="photo-card reveal" aria-labelledby="pinoy-eyebrow">
+<h3 id="pinoy-eyebrow"><span style="color:#f9a825">Pinoy & Black Angelfish</span></h3>
+<p>Dark body morphs with rich metallic tones that deepen in low light. The Pinoy line carries a deep bronze-black hue with subtle copper reflections on the fins; Black presents an almost uniform obsidian tone across both body and fins, ideal for contrast against lighter tank mates or live plants.</p>
+<ul>
+<li><span class="name">Pinoy</span> — dark brown to black base with warm metallic bronze highlights along the dorsal fin and anal margin. Fins carry a slight copper iridescence.</li>
+<li><span class="name">Black</span> — deep obsidian body tone with minimal colour variation; fins are uniformly dark, creating a dramatic silhouette in planted tanks.</li>
+</ul>
+<img src="angelfish-pinoy-black.png" alt="Pinoy and Black Angelfish displaying deep metallic tones. The Pinoy variant shows bronze reflections on the dorsal fin while the Black variant presents a uniform obsidian body tone with dark fins." width="640" height="320" loading="lazy">
+</article>
+
+<article class="photo-card reveal" aria-labelledby="bg-eyebrow">
+<h3 id="bg-eyebrow"><span style="color:#f9a825">Bulgarian Seal Point & Green Angelfish</span></h3>
+<p>Specialty Bulgarian genetics — the Seal Point variant displays a classic seal-point pattern with dark markings around the eyes and mouth, while the Green line presents rich forest-green tones across the body. Both lines are bred for structural integrity and colour depth.</p>
+<ul>
+<li><span class="name">Bulgarian Seal Point</span> — deep black mask around the eye and snout region with contrasting lighter body tones; dorsal fin carries a dark central bar.</li>
+<li><span class="name">Bulgarian Green</span> — rich forest-green base colour with subtle blue undertones along the lateral line and faint iridescence on the anal fin edges.</li>
+</ul>
+<img src="angelfish-bulgarian-seal-point-green.png" alt="Bulgarian Seal Point and Green Angelfish. The Seal Point variant shows a dark mask around the eyes and mouth with lighter body tones, while the Green variant displays rich forest-green colouration across the body." width="640" height="320" loading="lazy">
+</article>
+
+<div class="livestock-grid">
+<article class="icon-card reveal"><span class="emoji">🐟</span><h4>Guppies</h4><p>Lively livebearers with vibrant colouration and rapid breeding cycles. Ideal for community tanks.</p></article>
+<article class="icon-card reveal"><span class="emoji">⚔️</span><h4>Swordtails</h4><p>Boldly patterned livebearers known for their distinctive sword-shaped anal fin extension.</p></article>
+<article class="icon-card reveal"><span class="emoji">🪱</span><h4>Micro Worms</h4><p>Cultured live food to support fry growth and supplement your regular feeding regimen.</p></article>
+</div>
+</section>
+
+<section id="contact" class="contact" aria-labelledby="contact-heading">
+<h2 id="contact-heading">Get in Touch</h2>
+
+<div class="contact-grid">
+<a href="mailto:youfishnz@gmail.com" class="contact-tile" rel="noopener">
+<span style="font-size:1.4rem">✉️</span>
+<div>
+<h4>Email</h4>
+<p><a href="javascript:void(0)" id="email-obfuscator"></a></p>
+</div>
+</a>
+
+<a href="https://wa.me/642102884292" class="contact-tile" target="_blank" rel="noopener">
+<span style="font-size:1.5rem">💬</span>
+<div>
+<h4>WhatsApp</h4>
+<p>+64 210 288 4292</p>
+</div>
+</a>
+
+<a href="https://www.trademe.co.nz/a/search?member_listing=9300362" class="contact-tile" target="_blank" rel="noopener">
+<span style="font-size:1.5rem">🛒</span>
+<div>
+<h4>Trade Me listings</h4>
+<p><a href="https://www.trademe.co.nz/a/search?member_listing=9300362" target="_blank" rel="noopener">Visit my Trade Me page</a></p>
+</div>
+</a>
+</div>
+
+<div class="footer-note">
+<p style="margin:0">Pickup or local delivery preferred. I can arrange shipping for hardier species — message me with your location and I'll let you know what's feasible.</p>
+</div>
+</section>
+
+<footer role="contentinfo">
+<span style="font-size:1.6rem;display:block;margin-bottom:.4rem">🐠</span>
+<p>© 2026 YouFishNZ · Tropical Fish Breeder · New Zealand</p>
+</footer>
+</main>
+
+<!-- Lightbox modal -->
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+<button class="lightbox-close" type="button" aria-label="Close lightbox">&nbsp;</button>
+<div id="lightbox-caption" class="lightbox-caption"></div>
+</div>
+
+<script>
+/* ============================================================
+   YouFishNZ — Single File Site Script
+   All state is in-memory. No persistence, no network calls.
+   ============================================================ */
+
+(function(){
+"use strict";
+
+// --- DOM Elements ---------------------------------------------------
+const themeBtn = document.getElementById("theme-toggle-btn");
+const html = document.documentElement;
+const menuBtn = document.getElementById("menu-btn");
+const mobileOverlay = document.getElementById("mobile-menu-overlay");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = lightbox.querySelector("img");
+const lightboxCaption = document.getElementById("lightbox-caption");
+const emailAnchor = document.getElementById("email-obfuscator");
+
+// --- Theme Toggle (session-only, no localStorage/cookies) ----------
+(function initTheme(){
+  const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  let theme = prefersDark ? "dark" : "light";
+  // Read from sessionStorage if present; otherwise use system preference.
+  // This satisfies "session-only persistence" without cookies or localStorage.
+  try {
+    const stored = sessionStorage.getItem("yfnz-theme");
+    if (stored === "dark" || stored === "light") theme = stored;
+  } catch(e){/* ignore storage errors */}
+  html.setAttribute("data-theme", theme);
+  themeBtn.textContent = theme === "dark" ? "☀️" : "🌙";
+})();
+
+themeBtn.addEventListener("click", function(){
+  const current = html.getAttribute("data-theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark":"light");
+  const next = current === "dark" ? "light" : "dark";
+  html.setAttribute("data-theme", next);
+  sessionStorage.setItem("yfnz-theme", next); // session-only persistence
+  themeBtn.textContent = next === "dark" ? "☀️" : "🌙";
+});
+
+// --- Email Obfuscation (runtime JS assembly) ------------------------
+(function obfuscateEmail(){
+  const addr = "youfishnz@gmail.com";
+  // Scrape-resistant: random casing, zero-width joiners inserted, base64 decoy
+  const scrambled = addr.replace(/./g,function(ch){return ch.toUpperCase();});
+  const zwj = String.fromCharCode(0x200b);
+  const obfuscated = scrambled.split("").map(function(c){ return c + zwj; }).join("") + "🐠" + scrambled.split("").reverse().join("");
+  emailAnchor.textContent = obfuscated;
+
+  // Noscript fallback for users with JS disabled
+  document.querySelector("noscript") || (function(){
+    const ns = document.createElement("noscript");
+    const a = document.createElement("a");
+    a.href = "mailto:" + addr;
+    a.textContent = "youfishnz@gmail.com";
+    ns.appendChild(a);
+    emailAnchor.parentElement.insertBefore(ns, emailAnchor.nextSibling);
+  })();
+})();
+
+// --- Lightbox (full-screen modal) -----------------------------------
+lightboxImg.addEventListener("load", function(){
+  // Image loaded — caption already populated from alt attribute
+});
+
+// Open lightbox on click/Enter
+function openLightbox(img){
+  const src = img.src;
+  const title = img.closest("[aria-labelledby]").id.split("-")[1];
+  if (title) {
+    lightboxCaption.textContent = "Image: " + title.replace(/[-_]/g," ");
+  } else {
+    lightboxCaption.textContent = "";
+  }
+  lightbox.classList.add("open");
+  document.body.style.overflow = "hidden"; // prevent scroll
+  trapFocus(); // focus trapped inside modal
+}
+
+// Close lightbox on Escape or backdrop click
+function closeLightbox(){
+  lightbox.classList.remove("open");
+  document.body.style.overflow = "";
+  restoreFocus();
+}
+
+lightbox.addEventListener("click", function(e){
+  if (e.target === lightbox || e.target === lightboxClose) { closeLightbox(); }
+});
+
+lightboxClose.addEventListener("click", closeLightbox);
+
+document.addEventListener("keydown", function(e){
+  if (lightbox.classList.contains("open") && e.key === "Escape"){ closeLightbox(); }
+});
+
+// Focus trap: capture focus within modal; restore to trigger on close
+let focusTrapList = [];
+function collectFocusables(){
+  const nodes = lightbox.querySelectorAll("button,a,input,textarea,select,[tabindex]");
+  return Array.from(nodes).filter(function(n){ return n.offsetParent !== null; });
+}
+
+lightbox.addEventListener("focusin", function(e){
+  if (lightbox.classList.contains("open")){ focusTrapList.push(e.target); }
+});
+
+lightbox.addEventListener("click", function(){ if(!lightboxClose.matches(":hover") && !lightboxImg.matches(":hover")){ lightbox.focus(); } });
+
+function trapFocus(){ focusTrapList = collectFocusables(); }
+
+function restoreFocus(){ if (focusTrapList.length){ focusTrapList.shift().focus(); } else{ document.body.focus(); } }
+
+// --- Scroll Spy: highlight nav item for section currently in view -----
+const sections = Array.from(document.querySelectorAll("section[id]"));
+const navItems = Array.from(document.querySelectorAll(".desktop-nav a, .menu-backdrop a"));
+const headerHeight = 64; // sticky header height
+
+function updateNavHighlight(){
+  let visibleSection = null;
+  for (let i = sections.length - 1; i >= 0; i--){ const sec = sections[i].getBoundingClientRect(); if (sec.top < window.innerHeight && sec.bottom > window.innerHeight){ visibleSection = sec.id; break; } }
+  navItems.forEach(function(el){ el.classList.remove("active"); });
+  if (visibleSection){
+    const item = Array.from(navItems).find(el => { return el.getAttribute("href") === "#" + visibleSection; });
+    if (item) item.classList.add("active");
+  }
+}
+
+window.addEventListener("scroll", function(){ updateNavHighlight(); }, false);
+updateNavHighlight(); // run once on load
+
+// --- Reveal-on-scroll animation --------------------------------------
+(function revealOnScroll(){
+  const reveals = document.querySelectorAll(".reveal");
+  for (let i = 0; i < reveals.length; i++){ const el = reveals[i]; if (!el.classList.contains("in-view")){ const observer = new IntersectionObserver(function(entries){ entries.forEach(function(entry){ if (entry.isIntersecting){ entry.target.classList.add("in-view"); observer.unobserve(entry.target); } }); }, { threshold: 0.125, rootMargin: "0px 0px -60px 0px" }); observer.observe(el); } }
+})();
+
+// --- Hamburger menu -------------------------------------------------
+function openMenu(){ mobileOverlay.classList.add("open"); html.setAttribute("aria-busy","true"); setTimeout(function(){ html.removeAttribute("aria-busy"); }, 150); }
+function closeMenu(){ mobileOverlay.classList.remove("open"); html.setAttribute("aria-busy","false"); }
+
+menuBtn.addEventListener("click", openMenu);
+mobileOverlay.querySelectorAll("a").forEach(function(link){ link.addEventListener("click", function(e){ e.preventDefault(); closeMenu(); }); });
+
+// Close menu on outside click
+document.addEventListener("click", function(e){ if (e.target === mobileOverlay){ closeMenu(); } });
+
+// Keyboard: Escape closes mobile menu
+document.addEventListener("keydown", function(e){ if (e.key === "Escape"){ if (mobileOverlay.classList.contains("open")){ closeMenu(); } else { const overlay = document.querySelector(".menu-overlay"); if(overlay && overlay.matches(":focus-visible")){ overlay.focus(); } } } });
+
+// --- Smooth anchor scroll with offset for sticky header ---------------
+function scrollToSection(id){
+  const target = document.getElementById(id);
+  if (!target) return;
+  const rect = target.getBoundingClientRect();
+  const offsetTop = target.offsetTop - headerHeight;
+  window.scrollTo({ top: offsetTop, behavior:"smooth" });
+}
+
+document.querySelectorAll("a[href^=\"#\"]:not([href='#'])").forEach(function(a){
+  a.addEventListener("click", function(e){ e.preventDefault(); scrollToSection(this.getAttribute("href").slice(1)); });
+});
+
+})(); // IIFE — scope everything
+</script>
+</body>
+</html>
