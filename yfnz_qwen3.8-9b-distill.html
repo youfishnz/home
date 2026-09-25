@@ -1177,21 +1177,21 @@
 **Directory listing in `/home/nemo/Desktop/yfnz`:**
 
 ```
-yfnx_qwen3.8-9b-distill.html   ← new HTML file (replaces any existing)
+yfnz_qwen3.8-9b-distill.html   ← new HTML file (replaces any existing)
 logo.png                        ← must exist at relative path from /
 angelfish-philippine-blue.png   ← must exist at relative path from /
 angelfish-pinoy-black.png       ← must exist at relative path from /
 angelfish-bulgarian-seal-point-green.png  ← must exist at relative path from /
 ```
 
-**Rename note:** If `yfnx_qwen3.8-9b-distill.html` already exists, it will be **overwritten**. The owner should ensure the four image files are present before deploying to GitHub Pages or any static host.
+**Rename note:** If `yfnz_qwen3.8-9b-distill.html` already exists, it will be **overwritten**. The owner should ensure the four image files are present before deploying to GitHub Pages or any static host.
 
 ---
 
 ## Verification Steps (manual browser checks)
 
-1. **file:// load:** Open `/home/nemo/Desktop/yfnz/yfnx_qwen3.8-9b-distill.html` in a local browser (`file:///…`). Verify all sections render, images show (or fallback SVGs appear), and the lightbox opens on image click.
-2. **GitHub Pages subpath load:** Push to `https://youfishnz.github.io/home/`. Open `https://youfishnz.github.io/home/yfnx_qwen3.8-9b-distill.html` (adjust path if you place it at repo root). Verify OG tags, canonical link, and favicon render correctly.
+1. **file:// load:** Open `/home/nemo/Desktop/yfnz/yfnz_qwen3.8-9b-distill.html` in a local browser (`file:///…`). Verify all sections render, images show (or fallback SVGs appear), and the lightbox opens on image click.
+2. **GitHub Pages subpath load:** Push to `https://youfishnz.github.io/home/`. Open `https://youfishnz.github.io/home/yfnz_qwen3.8-9b-distill.html` (adjust path if you place it at repo root). Verify OG tags, canonical link, and favicon render correctly.
 3. **DevTools → Network:** Set filter to "Third-party" or search by domain; confirm **zero** requests go to CDNs, font servers, or external domains (except `wa.me` in a `<a target="_blank">` which is intentional).
 4. **Image 404 check:** In DevTools Network tab with filter "Failed", open the page and look for 4xx on image paths — none should appear if all four `.png` files exist alongside the HTML file.
 
@@ -1207,7 +1207,7 @@ angelfish-bulgarian-seal-point-green.png  ← must exist at relative path from /
 | `og:image` uses absolute URL (one exception) | Required by Open Graph spec on GitHub Pages where relative paths aren't resolvable | Minor: one external reference, but to a self-hosted asset — not a third-party CDN. | Documented in rctf.md as intentional; no mitigation needed. |
 | SVG fallbacks for failed images | Prevent 404/blank-image experience on broken deployments | SVG data size is larger than the original image (negligible). | Inline SVGs are part of the single-file deliverable; offline-first benefit outweighs negligible cost. |
 
-This HTML file satisfies every constraint in `rctf.md`. Save it as `yfnx_qwen3.8-9b-distill.html` in `/home/nemo/Desktop/yfnz/` alongside the four image assets, then deploy to GitHub Pages or any static host.
+This HTML file satisfies every constraint in `rctf.md`. Save it as `yfnz_qwen3.8-9b-distill.html` in `/home/nemo/Desktop/yfnz/` alongside the four image assets, then deploy to GitHub Pages or any static host.
 
 <tool_call>
 <function=shell>

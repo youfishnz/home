@@ -331,13 +331,13 @@ h2 {margin:0 0 18px;font-size:clamp(24px,4vw,32px);color:var(--fg);}
 /* ===== Theme toggle (session-only, no storage) ===== */
 (function(){
   var root = document.documentElement;
-  if(sessionStorage.getItem('yfnx-theme') === 'dark'){root.setAttribute('data-theme','dark');}else{root.removeAttribute('data-theme');}
+  if(sessionStorage.getItem('yfnz-theme') === 'dark'){root.setAttribute('data-theme','dark');}else{root.removeAttribute('data-theme');}
 })();
 
 document.getElementById('themeToggle').addEventListener('click',function(){
   var root = document.documentElement;
   var isDark = root.hasAttribute('data-theme');
-  if(isDark){root.removeAttribute('data-theme');sessionStorage.setItem('yfnx-theme','light');}else{root.setAttribute('data-theme','dark');sessionStorage.setItem('yfnx-theme','dark');}
+  if(isDark){root.removeAttribute('data-theme');sessionStorage.setItem('yfnz-theme','light');}else{root.setAttribute('data-theme','dark');sessionStorage.setItem('yfnz-theme','dark');}
 });
 
 /* ===== Sticky header scroll offset ===== */
