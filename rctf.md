@@ -21,8 +21,8 @@ You are a senior front-end engineer who cares about accessibility and plain, mai
 - **Visitors include people with colour-vision deficiency**, so state and emphasis should never rely on colour alone.
 
 ## Task
-
-Build one self-contained HTML page for the site, using the content, look and behaviour described below.
+- FIRST, You are not allowed to read and understand existing implementation of other HTML. You only write this new spec on your own understanding.
+- Build one self-contained HTML page for the site, using the content, look and behaviour described below.
 
 ### 1. Page content
 

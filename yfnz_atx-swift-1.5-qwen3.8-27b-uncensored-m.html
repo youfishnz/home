@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<!-- =====================================================================
+     YouFishNZ — single-file site (no build step, no external requests)
+     ---------------------------------------------------------------------
+     OWNER'S GUIDE TO EDITING THIS FILE
+     • All visible text lives in the <body>, under labelled comments.
+     • Styles are grouped and labelled inside the <style> block below:
+       colours, base, header, hero, sections, cards, contact, footer,
+       photo viewer, animations. Change a value once to re-style it
+       everywhere.
+     • Behaviour (menu, theme switch, photo viewer) is in the <script>
+       block just before </body>. You normally do not need to touch it.
+     • Images: keep the four PNG files in this same folder as this page.
+====================================================================== -->
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Page title and description (what search engines show) -->
+<title>YouFishNZ | Tropical Fish Breeder New Zealand</title>
+<meta name="description" content="YouFishNZ – Specialty tropical fish breeder in New Zealand. Philippine Blue, Pinoy, Black, Bulgarian Green & Seal Point angelfish, guppies, swordtails and live micro worms.">
+
+<!-- Favicon: inline SVG data URI, so there is no extra file to host -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c4a6e'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle'%3E%F0%9F%90%9F%3C/text%3E%3C/svg%3E">
+
+<!-- SEO / sharing. og:image is the one full URL that points at the hosted logo. -->
+<link rel="canonical" href="./">
+<meta property="og:type" content="website">
+<meta property="og:title" content="YouFishNZ | Tropical Fish Breeder New Zealand">
+<meta property="og:description" content="Specialty angelfish, livebearers and live foods raised with care in New Zealand. Quality genetics, strong fish, ready for your aquarium.">
+<meta property="og:url" content="https://youfishnz.github.io/home/">
+<meta property="og:image" content="https://youfishnz.github.io/home/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="YouFishNZ | Tropical Fish Breeder New Zealand">
+<meta name="twitter:description" content="Specialty angelfish, livebearers and live foods raised with care in New Zealand. Quality genetics, strong fish, ready for your aquarium.">
+<meta name="twitter:image" content="https://youfishnz.github.io/home/logo.png">
+
+<!-- Structured data (LocalBusiness). No email address on purpose — the
+     page builds it by script so scrapers cannot read it from source. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "YouFishNZ",
+  "description": "Specialty tropical fish breeder in New Zealand. Philippine Blue, Pinoy, Black, Bulgarian Green and Seal Point angelfish, guppies, swordtails and live micro worms.",
+  "telephone": "+642102884292",
+  "address": { "@type": "PostalAddress", "addressCountry": "NZ" },
+  "sameAs": ["https://www.trademe.co.nz/a/search?member_listing=9300362"]
+}
+</script>
+
+<style>
+/* =====================================================================
+   1. COLOURS AND SIZES (design tokens)
+   Change a value here to re-theme the whole page at once.
+===================================================================== */
+:root {
+  /* Light theme (default) — every text pair passes WCAG AA */
+  --bg: #f8fafc;            /* page background              */
+  --surface: #ffffff;       /* cards and header             */
+  --tint: #f0f9ff;          /* tinted surfaces / boxes      */
+  --text: #0f172a;          /* body text                    */
+  --muted: #475569;         /* secondary text               */
+  --heading: #0c4a6e;       /* section headings             */
+  --link: #0369a1;          /* links and main button        */
+  --on-link: #ffffff;       /* text on the main button      */
+  --border: #cbd5e1;        /* card borders                 */
+  --ring: #0284c7;          /* keyboard focus ring          */
+  --diamond: #0284c7;       /* variety list markers         */
+  --shadow-sm: 0 1px 2px rgb(15 23 42 / .06), 0 4px 14px rgb(15 23 42 / .08);
+  --shadow-lg: 0 4px 10px rgb(15 23 42 / .10), 0 16px 32px rgb(15 23 42 / .14);
+
+  /* Dark bands — identical in both themes */
+  --band-hero: linear-gradient(135deg, #082f49 0%, #0c4a6e 55%, #115e59 100%);
+  --band-contact: linear-gradient(135deg, #082f49 0%, #0c4a6e 100%);
+  --band-text: #ffffff;
+  --band-muted: #cfe3f1;
+  --band-accent: #5eead4;   /* light aqua highlight         */
+  --btn-hero-bg: #2dd4bf;
+  --btn-hero-text: #062a3f;
+}
+
+/* Dark theme — automatic, follows the device setting */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b1220;
+    --surface: #111a2e;
+    --tint: #0f2438;
+    --text: #e2e8f0;
+    --muted: #a8b3c4;
+    --heading: #bae6fd;
+    --link: #7dd3fc;
+    --on-link: #0b1220;
+    --border: #2a3a55;
+    --ring: #a5f3fc;
+    --diamond: #38bdf8;
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / .4), 0 4px 14px rgb(0 0 0 / .45);
+    --shadow-lg: 0 4px 10px rgb(0 0 0 / .5), 0 16px 32px rgb(0 0 0 / .55);
+  }
+}
+
+/* Dark theme — chosen by the theme button (this visit only, not stored) */
+:root[data-theme="dark"] {
+  --bg: #0b1220;
+  --surface: #111a2e;
+  --tint: #0f2438;
+  --text: #e2e8f0;
+  --muted: #a8b3c4;
+  --heading: #bae6fd;
+  --link: #7dd3fc;
+  --on-link: #0b1220;
+  --border: #2a3a55;
+  --ring: #a5f3fc;
+  --diamond: #38bdf8;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / .4), 0 4px 14px rgb(0 0 0 / .45);
+  --shadow-lg: 0 4px 10px rgb(0 0 0 / .5), 0 16px 32px rgb(0 0 0 / .55);
+}
+
+/* =====================================================================
+   2. BASE STYLES, UTILITIES AND ACCESSIBILITY HELPERS
+===================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  /* Keep in-page link targets clear of the sticky header */
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--text);
+}
+
+img { max-width: 100%; }
+
+h1, h2, h3, h4 { margin: 0 0 .5rem; line-height: 1.15; font-weight: 800; color: var(--heading); }
+p { margin: 0 0 1rem; }
+
+/* One consistent, visible focus ring in both themes */
+:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+/* ...and a lighter ring where the background is always dark */
+.band-dark :focus-visible, .lightbox :focus-visible { outline-color: #a5f3fc; }
+
+/* Skip link — hidden until it receives keyboard focus */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 200;
+  padding: .75rem 1.25rem;
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid var(--ring);
+  border-radius: 0 0 .6rem .6rem;
+}
+.skip-link:focus { top: 0; }
+
+/* Screen-reader-only text (visually hidden, still readable) */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Lock page scroll while the photo viewer is open */
+.no-scroll { overflow: hidden; }
+
+[hidden] { display: none !important; }
+
+/* Shared content width — about 72rem, centred, padded on phones */
+.container {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2rem);
+}
+
+/* Neutral placeholder shown when an image file is missing */
+.img-missing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
+  width: 100%;
+  padding: 1rem;
+  background: #e2e8f0;
+  color: #475569;
+  border: 2px dashed #94a3b8;
+  border-radius: .5rem;
+  font-size: .85rem;
+  text-align: center;
+}
+.img-missing code { font-size: .8rem; word-break: break-all; }
+
+/* =====================================================================
+   3. HEADER (sticky, shrinks and gains a shadow once you scroll)
+===================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--surface);
+  border-bottom: 1px solid transparent;
+  padding-block: .75rem;
+  transition: padding .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.site-header.scrolled {
+  padding-block: .35rem;
+  border-bottom-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+
+/* The logo artwork is blue on transparent, so it sits on a white plate */
+.logo-plate {
+  display: inline-flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: .6rem;
+  padding: .3rem .55rem;
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+.logo-link { display: inline-flex; }
+.logo-img { height: 2.4rem; width: auto; display: block; transition: height .2s ease; }
+.site-header.scrolled .logo-img { height: 1.9rem; }
+
+/* Primary navigation */
+.nav-wrap { flex: 1; display: flex; justify-content: center; }
+.nav-links {
+  display: flex;
+  gap: .25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;               /* comfortable tap target */
+  padding: .5rem .9rem;
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: .5rem;
+}
+.nav-link:hover { background: var(--tint); }
+/* Current section: heavier weight plus a solid bar — not colour alone */
+.nav-link.active { font-weight: 800; color: var(--heading); }
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: .9rem; right: .9rem; bottom: .3rem;
+  height: 3px;
+  border-radius: 2px;
+  background: currentColor;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  min-height: 44px;
+  padding: .6rem 1.25rem;
+  border: 1px solid transparent;
+  border-radius: .75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-primary { background: var(--link); color: var(--on-link); }
+.btn-primary:hover { filter: brightness(1.12); }
+
+/* Round icon buttons (theme switch, mobile menu) */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: .6rem;
+  cursor: pointer;
+}
+.icon-btn:hover { background: var(--tint); }
+
+/* The menu button only appears on narrow screens */
+#menu-toggle { display: none; }
+
+@media (max-width: 47.99em) { /* below about 768px */
+  #menu-toggle { display: inline-flex; }
+
+  /* With JavaScript on, the links fold behind the menu button… */
+  html.js .nav-wrap {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    justify-content: flex-start;
+  }
+  html.js .nav-wrap.open { display: flex; }
+  html.js .nav-links { flex-direction: column; gap: 0; padding: .5rem 1rem 1rem; width: 100%; }
+  html.js .nav-link { border-radius: .5rem; }
+
+  /* …without JavaScript the links simply stay visible */
+}
+/* =====================================================================
+   4. HERO — dark ocean band with two soft blurred glows for depth
+===================================================================== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--band-hero);
+  color: var(--band-text);
+  padding-block: clamp(4rem, 10vw, 7rem);
+}
+
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  pointer-events: none;
+}
+.glow-1 { width: 28rem; height: 28rem; background: #38bdf8; opacity: .28; top: -9rem; right: -7rem; }
+.glow-2 { width: 24rem; height: 24rem; background: #2dd4bf; opacity: .22; bottom: -10rem; left: -6rem; }
+
+.hero .container { position: relative; z-index: 1; max-width: 46rem; padding-inline: clamp(1.25rem, 4vw, 2rem); }
+
+.hero-label {
+  margin: 0 0 1rem;
+  font-size: .875rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--band-accent);
+}
+
+.hero h1 {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+.hero h1 .hl { color: var(--band-accent); }
+
+.hero-copy { max-width: 34rem; font-size: 1.125rem; color: var(--band-muted); }
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.75rem; }
+.btn-hero { background: var(--btn-hero-bg); color: var(--btn-hero-text); }
+.btn-hero:hover { filter: brightness(1.08); }
+.btn-ghost {
+  background: transparent;
+  border-color: rgb(255 255 255 / .55);
+  color: #ffffff;
+}
+.btn-ghost:hover { background: rgb(255 255 255 / .12); }
+
+/* =====================================================================
+   5. SECTIONS — shared rhythm and headings
+===================================================================== */
+.section { padding-block: clamp(3rem, 8vw, 5.5rem); scroll-margin-top: 4.5rem; }
+.section > .container > h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  letter-spacing: -0.01em;
+}
+.section-intro { max-width: 46rem; color: var(--muted); margin-bottom: 2rem; }
+
+/* About sits on the plain card surface */
+.about { background: var(--surface); }
+
+/* Livestock sits on a tinted (light grey) band with white cards */
+.livestock { background: var(--tint); }
+
+/* =====================================================================
+   6. ABOUT — feature tiles
+===================================================================== */
+.feature-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  margin-top: 2rem;
+}
+.feature-tile {
+  background: var(--tint);
+  border: 1px solid var(--border);
+  border-radius: .9rem;
+  padding: 1.25rem;
+}
+.feature-icon {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-bottom: .75rem;
+  font-size: 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: .75rem;
+}
+.feature-tile h3 { font-size: 1.05rem; margin-bottom: .15rem; }
+.feature-sub { margin: 0; font-size: .9rem; color: var(--muted); }
+
+/* =====================================================================
+   7. LIVESTOCK — group headings, photo cards and icon cards
+===================================================================== */
+.group-title { margin: 2.5rem 0 1.25rem; font-size: clamp(1.3rem, 3vw, 1.6rem); }
+.group-title:first-of-type { margin-top: 0; }
+
+.card-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+}
+
+/* Photo cards */
+.photo-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .photo-card:hover, .icon-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+}
+
+.photo-wrap { position: relative; }
+.photo-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: #0f172a;
+  aspect-ratio: 16 / 9;      /* photo area, cropped to fill */
+  overflow: hidden;
+  cursor: zoom-in;
+}
+.photo-btn img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Small "Enlarge" chip over the corner of the photo (decorative —
+   the button itself is the control) */
+.enlarge-chip {
+  position: absolute;
+  top: .75rem;
+  right: .75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .3rem .65rem;
+  background: rgb(8 47 73 / .72);
+  color: #ffffff;
+  font-size: .75rem;
+  font-weight: 600;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.card-body { padding: 1.25rem 1.25rem 1.5rem; }
+.card-body h4 { font-size: 1.2rem; margin-bottom: .15rem; }
+.card-sub { margin: 0 0 .75rem; color: var(--muted); font-weight: 600; font-size: .95rem; }
+.card-desc { color: var(--text); }
+
+/* Varieties — tinted, bordered box with small diamond markers */
+.varieties {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: .85rem 1.1rem;
+  background: var(--tint);
+  border: 1px solid var(--border);
+  border-radius: .6rem;
+}
+.varieties li {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding-block: .3rem;
+  font-size: .95rem;
+}
+.varieties li::before {
+  content: "";
+  flex: none;
+  width: .45rem;
+  height: .45rem;
+  background: var(--diamond);
+  transform: rotate(45deg);   /* small diamond marker */
+}
+
+/* Icon cards (livebearers & live food) */
+.icon-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+/* Colourful gradient band with the large emoji — decoration only */
+.icon-band {
+  display: grid;
+  place-items: center;
+  height: 4.75rem;
+  font-size: 2.5rem;
+}
+.band-guppy   { background: linear-gradient(135deg, #f97316, #fb923c); } /* warm orange */
+.band-sword   { background: linear-gradient(135deg, #d97706, #fbbf24); } /* amber       */
+.band-worm    { background: linear-gradient(135deg, #15803d, #4ade80); } /* green       */
+
+.icon-card .card-body h4 { font-size: 1.2rem; margin-bottom: .5rem; }
+.pill {
+  display: inline-block;
+  padding: .15rem .7rem;
+  margin-bottom: .75rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* =====================================================================
+   8. CONTACT — dark band with translucent tiles
+===================================================================== */
+.contact { background: var(--band-contact); color: var(--band-text); }
+.contact h2 { color: #ffffff; }
+.contact .section-intro { color: var(--band-muted); }
+
+.contact-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+}
+.contact-tile {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: rgb(255 255 255 / .08);
+  border: 1px solid rgb(255 255 255 / .16);
+  border-radius: 1rem;
+}
+a.contact-tile {
+  color: inherit;
+  text-decoration: none;
+  transition: background .2s ease, transform .2s ease;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  a.contact-tile:hover { background: rgb(255 255 255 / .14); transform: translateY(-2px); }
+}
+
+.tile-badge {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.4rem;
+  background: rgb(255 255 255 / .14);
+  border-radius: 50%;
+}
+.tile-label { display: block; font-weight: 700; color: #ffffff; }
+.tile-value { display: block; margin-top: .15rem; color: var(--band-muted); overflow-wrap: anywhere; }
+a.contact-tile .tile-value { color: var(--band-accent); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Delivery note — panel with a thick left border */
+.delivery-note {
+  margin-top: 1.75rem;
+  padding: 1rem 1.25rem;
+  background: rgb(255 255 255 / .08);
+  border-left: 4px solid var(--band-accent);
+  border-radius: .6rem;
+  color: var(--band-muted);
+}
+
+/* =====================================================================
+   9. FOOTER — always dark, in both themes
+===================================================================== */
+.site-footer {
+  background: #0b1220;
+  color: var(--band-muted);
+  padding-block: 2rem;
+}
+.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.site-footer .logo-img { height: 2rem; }
+.copyright { margin: 0; font-size: .95rem; }
+
+/* =====================================================================
+   10. PHOTO VIEWER (lightbox)
+===================================================================== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgb(2 6 23 / .88);
+}
+.lb-figure {
+  position: relative;
+  margin: 0;
+  max-width: min(92vw, 48rem);
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+.lb-img {
+  width: 100%;
+  height: auto;
+  max-height: 76vh;
+  object-fit: contain;
+  border-radius: .75rem;
+  box-shadow: var(--shadow-lg);
+  background: #0f172a;
+}
+.lb-caption { color: var(--band-muted); }
+.lb-caption strong { display: block; color: #ffffff; font-size: 1.1rem; }
+.lb-close {
+  position: absolute;
+  top: -.5rem;
+  right: -.5rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  min-width: 44px;
+  min-height: 44px;
+  padding: .5rem .9rem;
+  background: rgb(255 255 255 / .12);
+  border: 1px solid rgb(255 255 255 / .35);
+  border-radius: .6rem;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.lb-close:hover { background: rgb(255 255 255 / .22); }
+
+/* =====================================================================
+   11. REVEAL ON SCROLL — cards fade and rise gently into view.
+   The .reveal class is only added by JavaScript when motion is OK, so
+   content can never be left invisible (no JS, reduced motion, print).
+===================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.reveal.in { opacity: 1; transform: none; }
+/* A card that receives keyboard focus is always visible */
+.reveal:focus-within { opacity: 1 !important; transform: none !important; }
+
+/* =====================================================================
+   12. REDUCED MOTION AND PRINT
+===================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
+@media print {
+  .site-header, .skip-link, .lightbox, .glow, #theme-toggle, #menu-toggle { display: none !important; }
+  body { background: #ffffff; color: #000000; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+</style>
+<script>
+/* Runs before the body parses: marks that JavaScript is available and
+   defines the "image missing" helper so it works even if a photo fails
+   before the rest of the page has loaded. */
+document.documentElement.classList.add("js");
+
+window.yfnzImgMissing = function (img) {
+  var box = document.createElement("div");
+  box.className = "img-missing";
+  box.setAttribute("role", "img");
+  box.setAttribute("aria-label", "Image missing — expected file: " + (img.getAttribute("src") || "unknown"));
+
+  var label = document.createElement("span");
+  label.textContent = "Image missing";
+  var code = document.createElement("code");
+  code.textContent = img.getAttribute("src") || "";
+  box.appendChild(label);
+  box.appendChild(code);
+
+  if (img.parentNode) { img.parentNode.replaceChild(box, img); }
+};
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ================= HEADER: logo · navigation · theme · contact ==== -->
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a class="logo-link" href="#top" aria-label="YouFishNZ — back to top of page">
+      <span class="logo-plate">
+        <img class="logo-img" src="logo.png" width="400" height="197" alt="YouFishNZ logo: a blue fish with the words YOUFISH NZ" onerror="yfnzImgMissing(this)">
+      </span>
+    </a>
+
+    <div class="nav-wrap" id="nav-wrap">
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="primary-nav">
+          <li><a class="nav-link" href="#about">About</a></li>
+          <li><a class="nav-link" href="#livestock">Livestock</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <button class="icon-btn" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch colour theme (currently light)">
+      <!-- Sun icon: shown while the page is in light mode -->
+      <svg id="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+      </svg>
+      <!-- Moon icon: shown while the page is in dark mode -->
+      <svg id="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden>
+        <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79Z"></path>
+      </svg>
+    </button>
+
+    <a class="btn btn-primary" href="#contact">Contact</a>
+
+    <button class="icon-btn" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-wrap" aria-label="Open menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<!-- ================= HERO: dark ocean band ========================= -->
+<section class="hero band-dark" aria-labelledby="hero-title">
+  <div class="glow glow-1" aria-hidden="true"></div>
+  <div class="glow glow-2" aria-hidden="true"></div>
+  <div class="container">
+    <p class="hero-label">New Zealand Tropical Fish Breeder</p>
+    <h1 id="hero-title">Healthy, locally bred<br><span class="hl">tropical fish</span></h1>
+    <p class="hero-copy">Specialty angelfish, livebearers and live foods raised with care in New Zealand. Quality genetics, strong fish, ready for your aquarium.</p>
+    <div class="hero-actions">
+      <a class="btn btn-hero" href="#livestock">View Livestock</a>
+      <a class="btn btn-ghost" href="#contact">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT: who I am + feature tiles =============== -->
+<section id="about" class="section about" aria-labelledby="about-title">
+  <div class="container">
+    <h2 id="about-title">About YouFishNZ</h2>
+    <p>Kia ora! I'm a dedicated tropical fish breeder based in New Zealand, focused on producing healthy, high-quality freshwater fish for local aquarists.</p>
+    <p>My specialty is angelfish colour morphs — particularly the sought-after Philippine Blue lines, Pinoy, Black, Bulgarian Green and Bulgarian Seal Point. I also breed popular livebearers and culture live foods to give your fish the best start.</p>
+    <p>All fish are raised in carefully maintained systems with attention to genetics, health and temperament. Whether you're looking for show-quality angelfish or hardy community fish, I'm happy to help.</p>
+
+    <!-- Feature tiles: change the emoji, title or subtitle freely -->
+    <div class="feature-grid">
+      <div class="feature-tile" data-reveal>
+        <span class="feature-icon" aria-hidden="true">🐟</span>
+        <h3>Angelfish</h3>
+        <p class="feature-sub">Specialty morphs</p>
+      </div>
+      <div class="feature-tile" data-reveal>
+        <span class="feature-icon" aria-hidden="true">🌊</span>
+        <h3>NZ Based</h3>
+        <p class="feature-sub">Local breeding</p>
+      </div>
+      <div class="feature-tile" data-reveal>
+        <span class="feature-icon" aria-hidden="true">🧬</span>
+        <h3>Quality Genetics</h3>
+        <p class="feature-sub">Selected lines</p>
+      </div>
+      <div class="feature-tile" data-reveal>
+        <span class="feature-icon" aria-hidden="true">🪱</span>
+        <h3>Live Foods</h3>
+        <p class="feature-sub">Micro worms</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LIVESTOCK: current stock ====================== -->
+<section id="livestock" class="section livestock" aria-labelledby="stock-title">
+  <div class="container">
+    <h2 id="stock-title">Current Livestock</h2>
+    <p class="section-intro">Available fish and live foods. Stock changes regularly — message me for current availability, sizes and pricing.</p>
+
+    <!-- ============================================================
+         HOW TO KEEP THIS SECTION UP TO DATE (owner's notes)
+         • Add or remove a variety: add or delete an <li> inside the
+           <ul class="varieties"> list of any card. Each <li> is one
+           line in the box, e.g.  <li>Pinoy Angelfish</li>
+         • Add a price to a variety line: put it in the same <li>,
+           e.g.  <li>Pinoy Angelfish — $45 each</li>. Prices are plain
+           text; there is no shop behind them, so just keep them fresh.
+         • Replace a photo: drop the new file into this folder and
+           either keep the same file name (nothing else to change) or
+           update the src="..." of that card's <img> — and set its
+           width/height attributes to the new file's real pixel size.
+         • Add a whole new photo card: copy one existing
+           <article class="photo-card"> block, paste it after the last
+           one, then change the image, aria-labels, headings and text.
+    ============================================================ -->
+
+    <!-- Group 1: angelfish photo cards -->
+    <h3 class="group-title">Angelfish <em>(Pterophyllum scalare)</em></h3>
+    <div class="card-grid">
+      <article class="photo-card" data-reveal>
+        <div class="photo-wrap">
+          <button class="photo-btn" type="button"
+                  aria-label="View large photo: Philippine Blue Angelfish — Silver, Blue Platinum and Ghost"
+                  data-title="Philippine Blue Angelfish"
+                  data-subtitle="Silver, Blue Platinum &amp; Ghost">
+            <img src="angelfish-philippine-blue.png" width="1376" height="768" loading="lazy"
+                 alt="Philippine Blue Silver, Platinum and Ghost angelfish swimming in a tank"
+                 onerror="yfnzImgMissing(this)">
+          </button>
+          <span class="enlarge-chip" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+            Enlarge
+          </span>
+        </div>
+        <div class="card-body">
+          <h4>Philippine Blue Angelfish</h4>
+          <p class="card-sub">Silver, Blue Platinum &amp; Ghost</p>
+          <p class="card-desc">Stunning structural blue iridescence that shifts beautifully under aquarium lighting. Includes Philippine Blue Silver, Blue Platinum, and Ghost varieties.</p>
+          <ul class="varieties">
+            <li>Philippine Blue Silver</li>
+            <li>Philippine Blue Platinum</li>
+            <li>Philippine Blue Ghost</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="photo-card" data-reveal>
+        <div class="photo-wrap">
+          <button class="photo-btn" type="button"
+                  aria-label="View large photo: Pinoy and Black Angelfish — dark body morphs and metallic tones"
+                  data-title="Pinoy &amp; Black Angelfish"
+                  data-subtitle="Dark body morphs &amp; metallic tones">
+            <img src="angelfish-pinoy-black.png" width="1376" height="768" loading="lazy"
+                 alt="Pinoy and Black angelfish with dark bodies in a tank"
+                 onerror="yfnzImgMissing(this)">
+          </button>
+          <span class="enlarge-chip" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+            Enlarge
+          </span>
+        </div>
+        <div class="card-body">
+          <h4>Pinoy &amp; Black Angelfish</h4>
+          <p class="card-sub">Dark body morphs &amp; metallic tones</p>
+          <p class="card-desc">Deep, dark pigmentation with high-contrast characteristics. Pinoy features dark bodies overlaid with intense blue metallic sheen alongside classic solid dark lines.</p>
+          <ul class="varieties">
+            <li>Pinoy Angelfish</li>
+            <li>Black Angelfish</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="photo-card" data-reveal>
+        <div class="photo-wrap">
+          <button class="photo-btn" type="button"
+                  aria-label="View large photo: Bulgarian Seal Point and Green Angelfish — specialty Bulgarian genetics"
+                  data-title="Bulgarian Seal Point &amp; Green"
+                  data-subtitle="Specialty Bulgarian genetics">
+            <img src="angelfish-bulgarian-seal-point-green.png" width="1376" height="752" loading="lazy"
+                 alt="Bulgarian Seal Point and Green angelfish in a tank"
+                 onerror="yfnzImgMissing(this)">
+          </button>
+          <span class="enlarge-chip" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+            Enlarge
+          </span>
+        </div>
+        <div class="card-body">
+          <h4>Bulgarian Seal Point &amp; Green</h4>
+          <p class="card-sub">Specialty Bulgarian genetics</p>
+          <p class="card-desc">Rare genetic lines featuring distinct colourations ranging from metallic green hues to dark point patterns on a light body.</p>
+          <ul class="varieties">
+            <li>Bulgarian Seal Point Angelfish</li>
+            <li>Bulgarian Green Angelfish</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <!-- Group 2: livebearers & live food icon cards -->
+    <h3 class="group-title">Livebearers &amp; Live Food</h3>
+    <div class="card-grid">
+      <article class="icon-card" data-reveal>
+        <div class="icon-band band-guppy"><span aria-hidden="true">🐠</span></div>
+        <div class="card-body">
+          <h4>Guppies</h4>
+          <p><span class="pill">Livebearer</span></p>
+          <p class="card-desc">Colourful, active and hardy. Perfect for community tanks or as a reliable livebearer project.</p>
+        </div>
+      </article>
+
+      <article class="icon-card" data-reveal>
+        <div class="icon-band band-sword"><span aria-hidden="true">🗡️</span></div>
+        <div class="card-body">
+          <h4>Swordtails</h4>
+          <p><span class="pill">Livebearer</span></p>
+          <p class="card-desc">Classic <em>Xiphophorus</em> with the iconic swordtail. Active mid-water swimmers that add movement and colour.</p>
+        </div>
+      </article>
+
+      <article class="icon-card" data-reveal>
+        <div class="icon-band band-worm"><span aria-hidden="true">🪱</span></div>
+        <div class="card-body">
+          <h4>Micro Worms</h4>
+          <p><span class="pill">Live food culture</span></p>
+          <p class="card-desc">Excellent first food for fry and small fish. Easy to culture and highly nutritious. Available as starter cultures.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT: dark band with tiles ================= -->
+<section id="contact" class="section contact band-dark" aria-labelledby="contact-title">
+  <div class="container">
+    <h2 id="contact-title">Get in Touch</h2>
+    <p class="section-intro">Interested in any of the fish above or want to know current availability and prices? Send me a message — happy to help with advice too.</p>
+
+    <!-- Contact tiles: WhatsApp and Trade Me are fully clickable;
+         the email address is built by script (see bottom of this file) -->
+    <div class="contact-grid">
+      <div class="contact-tile" data-reveal>
+        <span class="tile-badge" aria-hidden="true">📧</span>
+        <span>
+          <span class="tile-label">Email</span>
+          <!-- Shown without JavaScript; replaced by a real mailto link when JS runs -->
+          <span class="tile-value" id="email-value">youfishnz [at] gmail [dot] com</span>
+        </span>
+      </div>
+
+      <a class="contact-tile" data-reveal href="https://wa.me/642102884292" target="_blank" rel="noopener">
+        <span class="tile-badge" aria-hidden="true">💬</span>
+        <span>
+          <span class="tile-label">WhatsApp<span class="visually-hidden"> (opens in a new tab)</span></span>
+          <span class="tile-value">+64 210 288 4292</span>
+        </span>
+      </a>
+
+      <a class="contact-tile" data-reveal href="https://www.trademe.co.nz/a/search?member_listing=9300362" target="_blank" rel="noopener">
+        <span class="tile-badge" aria-hidden="true">🛒</span>
+        <span>
+          <span class="tile-label">Trade Me<span class="visually-hidden"> (opens in a new tab)</span></span>
+          <span class="tile-value">View my listings</span>
+        </span>
+      </a>
+    </div>
+
+    <p class="delivery-note">Pickup or local delivery preferred. Shipping can be arranged for hardy species depending on location and weather.</p>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER: always dark =========================== -->
+<footer class="site-footer band-dark">
+  <div class="container footer-inner">
+    <a href="#top" aria-label="YouFishNZ — back to top of page">
+      <span class="logo-plate">
+        <img class="logo-img" src="logo.png" width="400" height="197" loading="lazy" alt="YouFishNZ logo: a blue fish with the words YOUFISH NZ" onerror="yfnzImgMissing(this)">
+      </span>
+    </a>
+    <p class="copyright">© 2026 YouFishNZ · Tropical Fish Breeder · New Zealand</p>
+  </div>
+</footer>
+
+<!-- ================= PHOTO VIEWER (opened by the photo buttons) ==== -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lb-title" hidden>
+  <figure class="lb-figure">
+    <button class="lb-close" id="lb-close" type="button">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      Close
+    </button>
+    <img class="lb-img" id="lb-img" src="" alt="">
+    <figcaption class="lb-caption">
+      <strong id="lb-title"></strong>
+      <span id="lb-subtitle"></span>
+    </figcaption>
+  </figure>
+</div>
+
+<script>
+/* =====================================================================
+   BEHAVIOUR — plain JavaScript, no libraries, nothing stored in the
+   browser. Sections: 1 header · 2 mobile menu · 3 active nav link ·
+   4 photo viewer · 5 reveal on scroll · 6 theme switch ·
+   7 email address (assembled at runtime)
+===================================================================== */
+(function () {
+  "use strict";
+
+  var docEl = document.documentElement;
+  var body = document.body;
+
+  /* ------------------------------------------------------------------
+     1. HEADER — a little shorter, with a shadow, once you scroll
+  ------------------------------------------------------------------ */
+  var header = document.querySelector(".site-header");
+  function syncHeader() {
+    header.classList.toggle("scrolled", window.scrollY > 8);
+  }
+  window.addEventListener("scroll", syncHeader, { passive: true });
+  syncHeader();
+
+  /* ------------------------------------------------------------------
+     2. MOBILE MENU — below ~768px the links fold behind the menu
+        button. It closes when a link is chosen, on Escape (focus goes
+        back to the button), on an outside click, and when the window
+        widens to desktop size. Without JavaScript the links stay
+        visible (see the html.js rules in the CSS).
+  ------------------------------------------------------------------ */
+  var menuToggle = document.getElementById("menu-toggle");
+  var navWrap = document.getElementById("nav-wrap");
+
+  function setMenu(open) {
+    navWrap.classList.toggle("open", open);
+    menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  }
+
+  menuToggle.addEventListener("click", function () {
+    setMenu(!navWrap.classList.contains("open"));
+  });
+
+  navWrap.addEventListener("click", function (e) {
+    if (e.target.closest("a")) { setMenu(false); }
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && navWrap.classList.contains("open")) {
+      setMenu(false);
+      menuToggle.focus();
+    }
+  });
+
+  document.addEventListener("click", function (e) {
+    var inside = navWrap.contains(e.target) || menuToggle.contains(e.target);
+    if (navWrap.classList.contains("open") && !inside) { setMenu(false); }
+  });
+
+  window.addEventListener("resize", function () {
+    if (window.innerWidth >= 768) { setMenu(false); }
+  });
+
+  /* ------------------------------------------------------------------
+     3. ACTIVE NAV LINK — the section in view gets heavier text and a
+        solid bar (never colour alone). At the bottom of the page,
+        Contact is highlighted.
+  ------------------------------------------------------------------ */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-link"));
+  var sections = ["about", "livestock", "contact"].map(function (id) {
+    return document.getElementById(id);
+  });
+
+  function setActive() {
+    var currentId = null;
+    var atBottom = window.innerHeight + window.scrollY >= docEl.scrollHeight - 4;
+    if (atBottom) {
+      currentId = "contact";
+    } else {
+      var probe = window.scrollY + 120; /* just under the sticky header */
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].offsetTop <= probe) { currentId = sections[i].id; }
+      }
+    }
+    navLinks.forEach(function (link) {
+      var on = link.getAttribute("href") === "#" + currentId;
+      link.classList.toggle("active", on);
+      if (on) { link.setAttribute("aria-current", "true"); }
+      else { link.removeAttribute("aria-current"); }
+    });
+  }
+
+  window.addEventListener("scroll", setActive, { passive: true });
+  window.addEventListener("resize", setActive);
+  setActive();
+
+  /* ------------------------------------------------------------------
+     4. PHOTO VIEWER — the photo large on a dark backdrop with its
+        title and subtitle as a caption. Closes via the Close button,
+        Escape, or a click outside the photo. Focus stays inside while
+        open and returns to the photo afterwards; the page behind does
+        not scroll. (Enter/Space work because each photo is a button.)
+  ------------------------------------------------------------------ */
+  var lightbox = document.getElementById("lightbox");
+  var lbImg = document.getElementById("lb-img");
+  var lbTitle = document.getElementById("lb-title");
+  var lbSubtitle = document.getElementById("lb-subtitle");
+  var lbClose = document.getElementById("lb-close");
+  var lastTrigger = null;
+
+  function openLightbox(btn) {
+    var img = btn.querySelector("img");
+    if (!img || !img.getAttribute("src")) { return; } /* image missing */
+    lastTrigger = btn;
+    lbImg.src = img.getAttribute("src");
+    lbImg.alt = img.getAttribute("alt") || "";
+    lbTitle.textContent = btn.getAttribute("data-title") || "";
+    lbSubtitle.textContent = btn.getAttribute("data-subtitle") || "";
+    lightbox.hidden = false;
+    body.classList.add("no-scroll");
+    lbClose.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.hidden = true;
+    body.classList.remove("no-scroll");
+    lbImg.src = "";
+    if (lastTrigger) { lastTrigger.focus(); lastTrigger = null; }
+  }
+
+  document.querySelectorAll(".photo-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () { openLightbox(btn); });
+  });
+
+  lbClose.addEventListener("click", closeLightbox);
+
+  lightbox.addEventListener("click", function (e) {
+    if (e.target === lightbox) { closeLightbox(); } /* click outside the photo */
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (lightbox.hidden) { return; }
+    if (e.key === "Escape") { closeLightbox(); return; }
+    if (e.key === "Tab") {
+      /* Only the Close button is focusable inside, so keep it there. */
+      e.preventDefault();
+      lbClose.focus();
+    }
+  });
+
+  /* ------------------------------------------------------------------
+     5. REVEAL ON SCROLL — cards fade and rise gently into view. The
+        .reveal class is only added when the visitor has not asked for
+        reduced motion, so content can never be left invisible (no JS,
+        reduced motion, printing, or keyboard focus).
+  ------------------------------------------------------------------ */
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  if (!reduceMotion.matches && "IntersectionObserver" in window) {
+    var revealEls = document.querySelectorAll("[data-reveal]");
+    revealEls.forEach(function (el) { el.classList.add("reveal"); });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+    revealEls.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ------------------------------------------------------------------
+     6. THEME SWITCH — the page follows the device setting; the button
+        chooses light or dark for this visit only (nothing is stored,
+        so a reload returns to the device setting). Sun = light active,
+        moon = dark active; the pressed state is exposed to screen
+        readers.
+  ------------------------------------------------------------------ */
+  var themeToggle = document.getElementById("theme-toggle");
+  var iconSun = document.getElementById("icon-sun");
+  var iconMoon = document.getElementById("icon-moon");
+  var systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+  function isDark() {
+    return docEl.getAttribute("data-theme") === "dark" ||
+           (docEl.getAttribute("data-theme") !== "light" && systemDark.matches);
+  }
+
+  function syncThemeButton() {
+    var dark = isDark();
+    iconSun.hidden = dark;
+    iconMoon.hidden = !dark;
+    themeToggle.setAttribute("aria-pressed", dark ? "true" : "false");
+    themeToggle.setAttribute("aria-label",
+      "Switch colour theme (currently " + (dark ? "dark" : "light") + ")");
+  }
+
+  themeToggle.addEventListener("click", function () {
+    docEl.setAttribute("data-theme", isDark() ? "light" : "dark");
+    syncThemeButton();
+  });
+
+  systemDark.addEventListener("change", function () {
+    if (!docEl.hasAttribute("data-theme")) { syncThemeButton(); }
+  });
+
+  syncThemeButton();
+
+  /* ------------------------------------------------------------------
+     7. EMAIL ADDRESS — assembled at runtime so simple scrapers cannot
+        read it from the page source (it also stays out of the JSON-LD).
+        Without JavaScript, "youfishnz [at] gmail [dot] com" is shown
+        instead.
+  ------------------------------------------------------------------ */
+  var emailValue = document.getElementById("email-value");
+  if (emailValue) {
+    var parts = ["youfishnz", "gmail", "com"];
+    var address = parts[0] + "@" + parts[1] + "." + parts[2];
+    var mailto = document.createElement("a");
+    mailto.href = "mailto:" + address;
+    mailto.textContent = address;
+    emailValue.replaceWith(mailto);
+  }
+})();
+</script>
+
+</body>
+</html>
